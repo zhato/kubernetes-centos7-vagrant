@@ -21,3 +21,5 @@ sudo /bin/cp -a /etc/kubernetes/admin.conf /shared
 
 kubectl apply -f /shared/kube-flannel.yml
 kubectl apply -f /shared/kube-flannel-rbac.yml
+
+kubectl create -f https://git.io/kube-dashboard

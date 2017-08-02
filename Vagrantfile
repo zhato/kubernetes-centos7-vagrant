@@ -40,11 +40,11 @@ Vagrant.configure("2") do |config|
         s.inline = "sh /shared/node.sh $1 $2 $3 $4"
         s.args = ["#{masterIp}", "#{$token}", "#{nodeIp}", "#{i}"]
       end
-      node.vm.provision "shell", inline: <<-SHELL
-        if [ "#{i}" == "#{$node_count}" ]; then
-          kubectl --kubeconfig /shared/admin.conf create -f https://git.io/kube-dashboard
-        fi
-      SHELL
+      # node.vm.provision "shell", inline: <<-SHELL
+      #   if [ "#{i}" == "#{$node_count}" ]; then
+      #     kubectl --kubeconfig /shared/admin.conf create -f https://git.io/kube-dashboard
+      #   fi
+      # SHELL
     end
   end
 end
