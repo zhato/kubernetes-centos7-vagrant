@@ -19,5 +19,5 @@ sudo /bin/cp -a /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 sudo /bin/cp -a /etc/kubernetes/admin.conf /shared
 
-kubectl apply -f /vagrant/kube-flannel.yml
-kubectl apply -f /vagrant/kube-flannel-rbac.yml
+kubectl apply -f /shared/kube-flannel.yml
+kubectl apply -f /shared/kube-flannel-rbac.yml
