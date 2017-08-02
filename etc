@@ -1,0 +1,4 @@
+while :; do kubectl get po --namespace=kube-system -o wide | grep -v Running; kubectl get nodes -o wide; sleep 2; done
+
+
+https://www.exratione.com/2014/06/how-to-reboot-a-vagrant-guest-vm-during-provisioning/
