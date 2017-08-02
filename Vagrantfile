@@ -17,10 +17,10 @@ Vagrant.configure("2") do |config|
     master.vm.provider "virtualbox" do |v|
       v.memory = $master_memory
     end
-    master.vm.provision :shell, :inline => "sh /vagrant/common.sh"
+    master.vm.provision :shell, :inline => "sh /shared/common.sh"
     master.vm.provision :unix_reboot
     master.vm.provision :shell do |s|
-      s.inline = "sh /vagrant/master.sh $1 $2"
+      s.inline = "sh /shared/master.sh $1 $2"
       s.args = ["#{masterIp}", "#{$token}"]
     end
   end
@@ -34,15 +34,15 @@ Vagrant.configure("2") do |config|
       node.vm.provider "virtualbox" do |v|
         v.memory = $node_memory
       end
-      node.vm.provision :shell, :inline => "sh /vagrant/common.sh"
+      node.vm.provision :shell, :inline => "sh /shared/common.sh"
       node.vm.provision :unix_reboot
       node.vm.provision :shell do |s|
-        s.inline = "sh /vagrant/node.sh $1 $2 $3 $4"
+        s.inline = "sh /shared/node.sh $1 $2 $3 $4"
         s.args = ["#{masterIp}", "#{$token}", "#{nodeIp}", "#{i}"]
       end
       node.vm.provision "shell", inline: <<-SHELL
         if [ "#{i}" == "#{$node_count}" ]; then
-          kubectl --kubeconfig /vagrant/admin.conf create -f https://git.io/kube-dashboard
+          kubectl --kubeconfig /shared/admin.conf create -f https://git.io/kube-dashboard
         fi
       SHELL
     end
