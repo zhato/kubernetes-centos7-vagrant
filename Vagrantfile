@@ -23,6 +23,9 @@ Vagrant.configure("2") do |config|
       s.inline = "sh /shared/master.sh $1 $2"
       s.args = ["#{masterIp}", "#{$token}"]
     end
+    # master.vm.provision "shell", inline: <<-SHELL
+    #   kubectl create -f https://git.io/kube-dashboard
+    # SHELL
   end
 
   ## NODE
