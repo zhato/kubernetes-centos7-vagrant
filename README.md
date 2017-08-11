@@ -2,12 +2,10 @@
 
 ## Requirements
 
-* Vagrant - https://www.vagrantup.com/
-* VirtualBox - https://www.virtualbox.org/
-* kubectl - https://kubernetes.io/docs/tasks/tools/install-kubectl/
-* Vagrant Plugins - https://github.com/dotless-de/vagrant-vbguest <pre>
-vagrant plugin install vagrant-vbguest
-</pre>
+* [VirtualBox](https://www.virtualbox.org/)
+* [Vagrant](https://www.vagrantup.com/)
+* [Vagrant Plugin](https://github.com/dotless-de/vagrant-vbguest) - <code>vagrant plugin install vagrant-vbguest</code>
+* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
 ## Running Kubernetes Cluster
 
