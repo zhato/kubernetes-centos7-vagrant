@@ -1,7 +1,7 @@
 # kubeadm init token
 $token = "56225f.9096af3559800a6a"
 
-# IpAddress
+# IpAddress - VirtualBox host only network ip....
 $clusterIp = "192.168.56."
 
 # Master
