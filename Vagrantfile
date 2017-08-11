@@ -17,15 +17,15 @@ Vagrant.configure("2") do |config|
     master.vm.provider "virtualbox" do |v|
       v.memory = $master_memory
     end
+    # Instal Kubrntes
     master.vm.provision :shell, :inline => "sh /shared/common.sh"
+    # Reboot
     master.vm.provision :unix_reboot
+    # Kubeadm init, Install Network Addon, Dashboard
     master.vm.provision :shell do |s|
       s.inline = "sh /shared/master.sh $1 $2"
       s.args = ["#{masterIp}", "#{$token}"]
     end
-    # master.vm.provision "shell", inline: <<-SHELL
-    #   kubectl create -f https://git.io/kube-dashboard
-    # SHELL
   end
 
   ## NODE
@@ -37,8 +37,11 @@ Vagrant.configure("2") do |config|
       node.vm.provider "virtualbox" do |v|
         v.memory = $node_memory
       end
+      # Instal Kubrntes
       node.vm.provision :shell, :inline => "sh /shared/common.sh"
+      # Reboot
       node.vm.provision :unix_reboot
+      # Join
       node.vm.provision :shell do |s|
         s.inline = "sh /shared/node.sh $1 $2 $3 $4"
         s.args = ["#{masterIp}", "#{$token}", "#{nodeIp}", "#{i}"]
