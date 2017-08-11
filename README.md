@@ -57,9 +57,8 @@ $ vagrant up
 Windows 또는 Mac, Linux 에서 아래 명령을 실행하고 http://locahost:8001/ui/ 로 접속한다.
 
 ```bash
-$ pwd
-/path/to/kubernetes-centos7-vagrant
-$ kubectl --kubeconfig admin.conf proxy
+$ cd /path/to/kubernetes-centos7-vagrant
+$ /path/to/kubectl --kubeconfig admin.conf proxy
 ```
 
 * admin.conf 는 vagranfile 에 정의된 config.vm.synced_folder ".", "/shared" 에 의해서 현재 master 에 kubernetes 가 모두 설치 된 후에 현재 디렉터리로(/shared)로 admin.conf 를 복사한다.
