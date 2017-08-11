@@ -74,3 +74,9 @@ $ /path/to/kubectl --kubeconfig admin.conf proxy
 
         위와 같이 수정을 안하면 대시보드 접속이 안됩니다.
     ```
+
+## 참조 링크
+
+* [Using kubeadm to Create a Cluster - https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/)
+* [Vagrant Centos kubernetes cluster - https://github.com/clifinger/vagrant-centos-kubernetes](https://github.com/clifinger/vagrant-centos-kubernetes)
+* [kubeadm을 이용한 Linux에 Kubernetes 설치하기 - http://xoit.tistory.com/6](http://xoit.tistory.com/6)
