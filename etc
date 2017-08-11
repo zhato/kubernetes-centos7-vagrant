@@ -2,3 +2,14 @@ while :; do kubectl get po --namespace=kube-system -o wide | grep -v Running; ku
 
 
 https://www.exratione.com/2014/06/how-to-reboot-a-vagrant-guest-vm-during-provisioning/
+
+
+# MSA Appliction Test
+
+# create
+kubectl create namespace sock-shop
+kubectl apply -n sock-shop -f "https://github.com/microservices-demo/microservices-demo/blob/master/deploy/kubernetes/complete-demo.yaml?raw=true"
+
+# delete
+kubectl delete -n sock-shop -f "https://github.com/microservices-demo/microservices-demo/blob/master/deploy/kubernetes/complete-demo.yaml?raw=true"
+kubectl delete namespace sock-shop
