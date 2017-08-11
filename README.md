@@ -48,7 +48,8 @@ $node_memory = 1536
 ## Kubernetes cluster 생성
 
 ```bash
-# vagrant up
+$ cd /path/to/kubernetes-centos7-vagrant
+$ vagrant up
 ```
 
 ## Dashboard 확인
@@ -71,4 +72,6 @@ $ kubectl --kubeconfig admin.conf proxy
         command: [ "/opt/bin/flanneld", "--ip-masq", "--kube-subnet-mgr"] <-- 이걸
 
         command: [ "/opt/bin/flanneld", "--ip-masq", "--kube-subnet-mgr" , "--iface=eth1"] <-- 이걸로 수정함.
+
+        위와 같이 수정을 안하면 대시보드 접속이 안됩니다.
     ```
