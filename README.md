@@ -66,8 +66,8 @@ $ /path/to/kubectl --kubeconfig admin.conf proxy
 
 ## 기타
 
-* [kube-flannel-rabc.yml](https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel-rbac.yml)
-* [kube-flannel.yml](https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml)
+* [https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel-rbac.yml](https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel-rbac.yml)
+* [https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml](https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml)
     ```bash
         command: [ "/opt/bin/flanneld", "--ip-masq", "--kube-subnet-mgr"] <-- 이걸
 
