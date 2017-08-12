@@ -74,7 +74,8 @@ $ /path/to/kubectl --kubeconfig admin.conf proxy
         command: [ "/opt/bin/flanneld", "--ip-masq", "--kube-subnet-mgr" , "--iface=eth1"] <-- 이걸로 수정함.
 
         위와 같이 수정을 안하면 대시보드 접속이 안됩니다.
-        왜 안되는지는 물어보지 마세요.
+        eth0는 VirtualBox 의 기본이 NAT로 동작해서 서비스 네트웍으로 구축이 안되서 통신이 안됩니다.
+        eth1은 host only 로 된 Interface라 이것이 지정되어야 모든 통신이 정상적으로 동작합니다.
     ```
 
 ## 참조 링크
