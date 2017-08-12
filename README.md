@@ -18,6 +18,7 @@ Windows 또는 Mac, Linux 어디든 아래 환경을 설치합니다.
     ```bash
     $ vagrant plugin install vagrant-vbguest
     ```
+* [Vagrant provision reboot - https://github.com/exratione/vagrant-provision-reboot](https://github.com/exratione/vagrant-provision-reboot)
 * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) - Vagrant 가 설치된 Windows 또는 Mac, Linux 에 설치합니다.
 
 ## Git 을 clone 한다.
@@ -81,3 +82,4 @@ $ /path/to/kubectl --kubeconfig admin.conf proxy
 * [Using kubeadm to Create a Cluster - https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/)
 * [Vagrant Centos kubernetes cluster - https://github.com/clifinger/vagrant-centos-kubernetes](https://github.com/clifinger/vagrant-centos-kubernetes)
 * [kubeadm을 이용한 Linux에 Kubernetes 설치하기 - http://xoit.tistory.com/6](http://xoit.tistory.com/6)
+
