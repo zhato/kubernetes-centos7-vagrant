@@ -1,0 +1,85 @@
+###############
+# 공통
+###############
+cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
+       https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+EOF
+
+yum install -y docker
+systemctl enable docker && systemctl restart docker
+
+yum install -y kubelet kubeadm
+systemctl enable kubelet && systemctl restart kubelet
+
+echo "192.168.56.30 master" >> /etc/hosts
+echo "192.168.56.31 node-1" >> /etc/hosts
+echo "192.168.56.32 node-2" >> /etc/hosts
+echo "192.168.56.33 node-3" >> /etc/hosts
+
+###############
+# 마스터
+###############
+
+kubeadm init \
+--apiserver-advertise-address=192.168.56.30 \
+--apiserver-bind-port=8080 \
+--token=56225f.9096af3559800a6a \
+--pod-network-cidr 10.244.0.0/16 \
+--token-ttl 0
+
+mkdir -p $HOME/.kube
+sudo /bin/cp -a /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+sudo /bin/cp -a /etc/kubernetes/admin.conf /shared
+
+kubectl apply -f /shared/kube-flannel.yml
+kubectl apply -f /shared/kube-flannel-rbac.yml
+
+while :; do kubectl get po --namespace=kube-system -o wide | grep -v Running; sleep 2; done
+
+#kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+#kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel-rbac.yml
+
+
+###############
+# 노드
+###############
+
+kubeadm join --node-name `hostname` --token 56225f.9096af3559800a6a 192.168.56.30:8080
+kubeadm join --node-name `hostname` --token 56225f.9096af3559800a6a 192.168.56.30:8080 --skip-preflight-checks
+
+
+###############
+# 마스터
+###############
+
+kubectl create -f https://git.io/kube-dashboard
+
+kubectl run bb1 --rm -ti --image busybox /bin/sh
+kubectl run bb2 --rm -ti --image busybox /bin/sh
+
+
+###############
+# PC
+###############
+
+kubectl --kubeconfig ./admin.conf proxy
+
+
+###################
+# 마스터 샘플 생성
+###################
+
+kubectl create namespace sock-shop
+kubectl apply -n sock-shop -f "https://github.com/microservices-demo/microservices-demo/blob/master/deploy/kubernetes/complete-demo.yaml?raw=true"
+kubectl -n sock-shop get all -o wide
+
+
+watch -n 2 'kubectl -n sock-shop get all -o wide'
