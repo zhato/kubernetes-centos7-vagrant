@@ -1,7 +1,5 @@
 #!/bin/bash
 
-yum -y update
-
 setenforce 0
 systemctl disable firewalld && systemctl stop firewalld
 sed 's/^SELINUX=enforcing/SELINUX=disabled/g' -i /etc/selinux/config
@@ -24,3 +22,5 @@ systemctl enable docker && systemctl restart docker
 
 yum install -y kubelet kubeadm
 systemctl enable kubelet && systemctl restart kubelet
+
+yum -y update

@@ -1,3 +1,5 @@
-.vagrant/
-*.box
+.kube
+.vagrant
 admin.conf
+dashboard-admin.yaml
+ihko.yml

@@ -10,6 +10,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder '.', '/vagrant', disabled: true
   config.vm.synced_folder ".", "/shared"
 
+  ## MASTER
   masterIp = $clusterIp+"30"
   config.vm.define "master" do |master|
     master.vm.network :private_network, :ip => "#{masterIp}"
@@ -21,7 +22,7 @@ Vagrant.configure("2") do |config|
     master.vm.provision :shell, :inline => "sh /shared/common.sh"
     # Reboot
     master.vm.provision :unix_reboot
-    # Kubeadm init, Install Network Addon, Dashboard
+    # Kubeadm init,  Install Network Addon, Dashboard
     master.vm.provision :shell do |s|
       s.inline = "sh /shared/master.sh $1 $2"
       s.args = ["#{masterIp}", "#{$token}"]
