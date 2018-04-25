@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-require './vagrant-provision-reboot-plugin'
+require './vagrant-provision-reboot/vagrant-provision-reboot-plugin'
 
 load 'config.rb'
 

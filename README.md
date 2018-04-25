@@ -56,7 +56,7 @@ $ vagrant up
 ## Dashboard 확인
 
 Windows 또는 Mac, Linux 에서 아래 명령을 실행하고 http://locahost:8001/ui/ 로 접속한다.
-
+* [kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml] (kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml)
 ```bash
 $ cd /path/to/kubernetes-centos7-vagrant
 $ /path/to/kubectl --kubeconfig admin.conf proxy
@@ -66,7 +66,6 @@ $ /path/to/kubectl --kubeconfig admin.conf proxy
 
 ## 기타
 
-* [https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel-rbac.yml](https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel-rbac.yml)
 * [https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml](https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml)
     ```bash
         command: [ "/opt/bin/flanneld", "--ip-masq", "--kube-subnet-mgr"] <-- 이걸
