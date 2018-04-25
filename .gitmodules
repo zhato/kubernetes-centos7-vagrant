@@ -1,0 +1,3 @@
+[submodule "vagrant-provision-reboot"]
+	path = vagrant-provision-reboot
+	url = https://github.com/zhato/vagrant-provision-reboot.git
